@@ -27,7 +27,6 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
     User.associate = (models: Database) =>{
         //asociaciones
         User.belongsToMany(models.Product, { through: 'UserProject' })
-        
     }
     
     return User
