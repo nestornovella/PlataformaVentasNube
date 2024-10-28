@@ -1,9 +1,6 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
 import { Database } from "../../interfaces";
 
-
-
-
 const insertModel = (sequelizeInstance:Sequelize | any)=>{
     const User = sequelizeInstance.define('User', {
         id:{
