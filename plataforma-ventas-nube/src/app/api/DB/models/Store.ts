@@ -4,7 +4,7 @@ import { Database } from "../../interfaces";
 
 
 
-const insertModel = (sequelizeInstance:Sequelize | any)=>{
+const modelInstance = (sequelizeInstance:Sequelize | any)=>{
     const Store = sequelizeInstance.define('Store', {
         id:{
             primaryKey:true,
@@ -30,4 +30,5 @@ const insertModel = (sequelizeInstance:Sequelize | any)=>{
 }
 
 
-export default insertModel
+
+export default modelInstance

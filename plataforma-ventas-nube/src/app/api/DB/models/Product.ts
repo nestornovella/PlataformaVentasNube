@@ -1,6 +1,6 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
 
-export default (sequelizeInstance:Sequelize | any)=>{
+const modelInstance = (sequelizeInstance:Sequelize | any)=>{
     const Product = sequelizeInstance.define('Product', {
         id:{
             primaryKey:true,
@@ -38,3 +38,6 @@ export default (sequelizeInstance:Sequelize | any)=>{
 
     return Product
 }
+
+
+export default modelInstance

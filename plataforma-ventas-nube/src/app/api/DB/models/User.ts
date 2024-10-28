@@ -1,7 +1,7 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
 import { Database } from "../../interfaces";
 
-const insertModel = (sequelizeInstance:Sequelize | any)=>{
+const modelInstance = (sequelizeInstance:Sequelize | any)=>{
     const User = sequelizeInstance.define('User', {
         id:{
             primaryKey:true,
@@ -32,4 +32,4 @@ const insertModel = (sequelizeInstance:Sequelize | any)=>{
     
     return User
 }
-export default insertModel
+export default modelInstance
