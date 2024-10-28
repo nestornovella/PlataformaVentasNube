@@ -1,4 +1,5 @@
 import { DataTypes, Sequelize } from "sequelize";
+import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any) => {
   const Membership = sequelizeInstance.define('Membership', {
@@ -21,7 +22,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any) => {
     },
   })
 
-  Membership.associate = (models: any) => {
+  Membership.associate = (models: Database) => {
     console.log(models)
   }
 

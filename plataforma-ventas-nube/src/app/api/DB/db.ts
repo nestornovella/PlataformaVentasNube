@@ -3,6 +3,7 @@ import pg from 'pg'
 import path from "path";
 import {readdirSync} from 'fs'
 import { fileURLToPath } from "url";
+import { Database } from "../interfaces";
 
 
 const url:string =process.env.NEXT_PUBLIC_PSQL_URL_PRODUCTION || ""
@@ -26,7 +27,7 @@ function checkConection(){
 
 
 async function importAndAsociateModels(){
-    const db :any= {}
+    const db : Database = {}
     try {
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);

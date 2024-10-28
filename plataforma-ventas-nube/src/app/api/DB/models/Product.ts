@@ -1,4 +1,5 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any)=>{
     const Product = sequelizeInstance.define('Product', {
@@ -30,7 +31,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
         }
     })
 
-    Product.associate = (models: any) =>{
+    Product.associate = (models: Database) =>{
         Product.belongsToMany(models.User, { through: 'UserProject' })
 
 

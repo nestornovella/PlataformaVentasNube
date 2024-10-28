@@ -1,4 +1,5 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { Database } from "../../interfaces";
 
 
 const modelInstance = (sequelizeInstance: Sequelize | any) => {
@@ -29,7 +30,7 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
         }
     })
 
-    Branch.associate = (models: any) => {
+    Branch.associate = (models: Database) => {
         console.log(models)
 
 
