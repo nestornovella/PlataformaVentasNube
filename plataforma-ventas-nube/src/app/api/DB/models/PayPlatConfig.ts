@@ -1,10 +1,12 @@
-import { DataTypes, Sequelize } from "sequelize";
+import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance: Sequelize | any) => {
   const PayPlatConfig = sequelizeInstance.define("PayPlatConfig", {
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: UUIDV4,
+      primaryKey:true,
     },
 
     credential: {
@@ -18,8 +20,8 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
       },
     },
   });
-  
-  PayPlatConfig.associate = (models:any) => {
+
+  PayPlatConfig.associate = (models:Database) => {
     console.log(models)
   }
 

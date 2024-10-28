@@ -1,10 +1,12 @@
-import { DataTypes, Sequelize } from "sequelize";
+import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any) => {
   const Membership = sequelizeInstance.define('Membership', {
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4
+      defaultValue: UUIDV4,
+      primaryKey:true,
     },
 
     name: {
@@ -21,7 +23,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any) => {
     },
   })
 
-  Membership.associate = (models: any) => {
+  Membership.associate = (models: Database) => {
     console.log(models)
   }
 
