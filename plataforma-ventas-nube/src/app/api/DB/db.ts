@@ -37,9 +37,7 @@ async function importAndAsociateModels(){
             .filter(file => file.endsWith('.ts'))
             .map(file => file.replace('.ts', ''))
     
-    
-        const modelFiles = modelsList
-        for (const file of modelFiles) {
+        for (const file of  modelsList) {
             const model = (await import(`./models/${file}`)).default(sequelize);
             db[model.name] = model;
         }
