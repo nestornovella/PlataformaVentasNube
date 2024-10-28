@@ -4,7 +4,9 @@ import path from "path";
 import {readdirSync} from 'fs'
 import { fileURLToPath } from "url";
 
-const sequelize = new Sequelize('postgres://nestornovella@localhost:5432/TIENDANUBE', {
+const url:string  = process.env.NEXT_PUBLIC_PSQL_URL_PRODUCTION || ''
+
+const sequelize = new Sequelize(url, {
     dialect:'postgres',
     logging:false,
     dialectModule: pg
@@ -20,10 +22,7 @@ function checkConection(){
 
 }
 
-const test = ['User', 'Product']
-function recurse (arreglo: []){
-    
-}
+
 
 async function importAndAsociateModels(){
     const db :any= {}
