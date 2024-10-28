@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database, Model } from "../../interfaces";
+import { Database } from "../../interfaces";
 
 export default (sequelizeInstance:Sequelize | any)=>{
     const Product = sequelizeInstance.define('Product', {
