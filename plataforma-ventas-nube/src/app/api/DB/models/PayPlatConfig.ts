@@ -20,7 +20,6 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
       },
     },
   });
-
   PayPlatConfig.associate = (models:Database) => {
     console.log(models)
   }

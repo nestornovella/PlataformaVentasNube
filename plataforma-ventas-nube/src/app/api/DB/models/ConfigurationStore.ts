@@ -1,4 +1,5 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { Database } from "../../interfaces";
 
 
 const modelInstance = (sequelizeInstance: Sequelize | any) => {
@@ -61,7 +62,7 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
         }
     })
 
-    ConfigurationStore.associate = (models: any) => {
+    ConfigurationStore.associate = (models: Database) => {
         console.log(models)
 
 
