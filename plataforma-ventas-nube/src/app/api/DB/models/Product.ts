@@ -1,7 +1,6 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database } from "../../interfaces";
 
-const insertModels =  (sequelizeInstance:Sequelize | any)=>{
+export default (sequelizeInstance:Sequelize | any)=>{
     const Product = sequelizeInstance.define('Product', {
         id:{
             primaryKey:true,
@@ -31,7 +30,7 @@ const insertModels =  (sequelizeInstance:Sequelize | any)=>{
         }
     })
 
-    Product.associate = (models: Database) =>{
+    Product.associate = (models: any) =>{
         Product.belongsToMany(models.User, { through: 'UserProject' })
 
 
@@ -39,5 +38,3 @@ const insertModels =  (sequelizeInstance:Sequelize | any)=>{
 
     return Product
 }
-
-export default insertModels
