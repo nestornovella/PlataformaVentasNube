@@ -1,4 +1,5 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { Database } from "../../interfaces";
 
 
 
@@ -19,7 +20,7 @@ export default (sequelizeInstance:Sequelize | any)=>{
         }
     })
 
-    Store.associate = (models: any) =>{
+    Store.associate = (models: Database) =>{
         //asociaciones
 
         

@@ -1,4 +1,5 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { Database } from "../../interfaces";
 
 
 
@@ -26,7 +27,7 @@ export default (sequelizeInstance:Sequelize | any)=>{
         }
     })
 
-    User.associate = (models: any) =>{
+    User.associate = (models: Database) =>{
         //asociaciones
         User.belongsToMany(models.Product, { through: 'UserProject' })
         
