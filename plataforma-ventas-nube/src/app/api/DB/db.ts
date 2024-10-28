@@ -32,7 +32,6 @@ async function importAndAsociateModels(){
         const __dirname = path.dirname(__filename);
         const modelsDir = path.join(__dirname, 'models');
 
-
         const modelsList = readdirSync(modelsDir)
             .filter(file => file.endsWith('.ts'))
             .map(file => file.replace('.ts', ''))
