@@ -22,6 +22,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
 
     Store.associate = (models: Database) =>{
         //asociaciones
+        console.log(models)
 
         
     }
