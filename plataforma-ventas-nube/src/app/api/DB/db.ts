@@ -49,7 +49,6 @@ async function importAndAsociateModels(){
         })
     
         console.log(sequelize.models)
-        console.log(modelsDir)
         
     } catch (error) {
         console.error(error)
