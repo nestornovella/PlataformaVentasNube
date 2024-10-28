@@ -1,10 +1,10 @@
-import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 
 const modelInstance = (sequelizeInstance:Sequelize | any) => {
   const Membership = sequelizeInstance.define('Membership', {
     id: {
       type: DataTypes.UUID,
-      defaultValue: UUIDV4
+      defaultValue: DataTypes.UUIDV4
     },
 
     name: {
