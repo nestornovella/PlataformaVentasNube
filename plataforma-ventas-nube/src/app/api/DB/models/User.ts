@@ -4,7 +4,7 @@ import { Database } from "../../interfaces";
 
 
 
-export default (sequelizeInstance:Sequelize | any)=>{
+const insertModel = (sequelizeInstance:Sequelize | any)=>{
     const User = sequelizeInstance.define('User', {
         id:{
             primaryKey:true,
@@ -26,12 +26,13 @@ export default (sequelizeInstance:Sequelize | any)=>{
             type:DataTypes.BOOLEAN
         }
     })
-
+    
     User.associate = (models: Database) =>{
         //asociaciones
         User.belongsToMany(models.Product, { through: 'UserProject' })
         
     }
-
+    
     return User
 }
+export default insertModel
