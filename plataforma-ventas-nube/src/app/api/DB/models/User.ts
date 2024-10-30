@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any)=>{
@@ -6,7 +6,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
         id:{
             primaryKey:true,
             type: DataTypes.UUID,
-            defaultValue:UUIDV4
+            defaultValue: DataTypes.UUIDV4
         },
         name:{
             type:DataTypes.STRING,
