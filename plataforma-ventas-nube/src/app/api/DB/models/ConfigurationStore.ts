@@ -1,4 +1,4 @@
-import { DataTypes, HasOne, Sequelize, UUIDV4 } from "sequelize";
+import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
 import { Database } from "../../interfaces";
 
 
