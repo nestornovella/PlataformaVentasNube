@@ -14,20 +14,17 @@ const sequelize = new Sequelize(url , {
     dialectModule: pg
 })
 
-function checkConection(){
-    try {
-        sequelize.authenticate()
-        .then(() => console.log('base de datos conectada'))
-    } catch (error) {
-        console.error(error)
-    }
+export function checkConection(){
+  
+        return sequelize.authenticate()
+                .then(() => console.log('base de datos conectada'))
 
 }
 
 export async function connectDB(){
     try {
         await sequelize.sync({force:true})
-        console.log("la coneccion se ha establecido")
+        return "coneccion establecida"
        } catch (error) {
         console.error(error)
        }
@@ -58,7 +55,7 @@ async function importAndAsociateModels(){
         })
         
     
-        console.log(sequelize.models)
+        //console.log(sequelize.models)
         
     } catch (error) {
         console.error(error)
