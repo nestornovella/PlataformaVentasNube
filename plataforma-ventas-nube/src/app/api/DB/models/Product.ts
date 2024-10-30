@@ -2,7 +2,7 @@ import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
 import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance: Sequelize | any) => {
-    const Product = sequelizeInstance.define('Product', {
+    const Product = sequelizeInstance.define('Product', { //{"name","images","price","stock","active"}
         id: {
             primaryKey: true,
             type: DataTypes.UUID,
@@ -23,10 +23,11 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
         stock: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
-            allowNull: false,
+            allowNull: true,
         },
         active: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            defaultValue:false
         },
        
     });

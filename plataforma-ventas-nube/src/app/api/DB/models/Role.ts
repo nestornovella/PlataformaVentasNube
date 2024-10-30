@@ -16,7 +16,8 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
     
     Role.associate = (models: Database) =>{
         //asociaciones
-        console.log(models)
+        Role.hasMany(models.User) //check
+
     }
     
     return Role

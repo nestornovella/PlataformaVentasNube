@@ -16,7 +16,8 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
             allowNull:false,
         },
         active:{
-            type:DataTypes.BOOLEAN
+            type:DataTypes.BOOLEAN,
+            defaultValue:true
         }
     })
 
@@ -25,6 +26,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
         Store.belongsTo(models.TypeBusiness)//check
         Store.hasOne(models.ConfigurationStore) //check
         Store.hasMany(models.Product)//check
+        Store.belongsTo(models.User) //check
         
     }
 

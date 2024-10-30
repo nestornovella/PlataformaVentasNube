@@ -20,13 +20,16 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
             type:DataTypes.TEXT
         },
         active:{
-            type:DataTypes.BOOLEAN
+            type:DataTypes.BOOLEAN,
+            defaultValue:true
         }
     })
     
     User.associate = (models: Database) =>{
         //asociaciones
-        User.hasOne(models.Membership)
+        User.hasOne(models.Membership)//check
+        User.belongsTo(models.Role)//check
+        User.hasMany(models.Store)//check
     }
     
     return User

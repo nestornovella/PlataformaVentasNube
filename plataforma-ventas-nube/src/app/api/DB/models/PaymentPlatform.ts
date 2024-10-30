@@ -18,7 +18,8 @@ const modelInstance = (sequelizeInstance:Sequelize | any) => {
     },
 
     active: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue:true
     }
     
   });

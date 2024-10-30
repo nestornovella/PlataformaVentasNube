@@ -17,7 +17,7 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
   
   TypeBusiness.associate = (models: Database) => {
     TypeBusiness.belongsToMany(models.Category, {through:"Category-typeBusiness"})
-    
+    TypeBusiness.hasMany(models.Store)
   }
 
   return TypeBusiness;
