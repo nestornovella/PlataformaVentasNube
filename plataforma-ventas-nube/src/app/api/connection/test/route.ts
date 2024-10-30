@@ -4,7 +4,7 @@ const {models} = sequelize
 
 
 export async function GET (){
-    await checkConection()
+   
     const usuarios = await models.User.findAll()
     return NextResponse.json(usuarios)
 

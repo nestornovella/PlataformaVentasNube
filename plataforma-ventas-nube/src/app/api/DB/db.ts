@@ -15,7 +15,6 @@ const sequelize = new Sequelize(url , {
 })
 
 export function checkConection(){
-  
         return sequelize.authenticate()
                 .then(() => console.log('base de datos conectada'))
 
