@@ -2,7 +2,7 @@ import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
 import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance: Sequelize | any) => {
-  const Category_Store = sequelizeInstance.define("Category_Store", {
+  const TypeBusiness = sequelizeInstance.define("TypeBusiness", {
     id: {
       type: DataTypes.UUID,
       defaultValue: UUIDV4,
@@ -15,11 +15,12 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
     }
   })
   
-  Category_Store.associate = (models: Database) => {
-    console.log(models)
+  TypeBusiness.associate = (models: Database) => {
+    TypeBusiness.belongsToMany(models.Category, {through:"Category-typeBusiness"})
+    
   }
 
-  return Category_Store;
+  return TypeBusiness;
 }
 
 export default modelInstance;

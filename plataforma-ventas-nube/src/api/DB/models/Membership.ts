@@ -2,7 +2,7 @@ import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
 import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any) => {
-  const PaymentPlatform = sequelizeInstance.define("PaymentPlatform", {
+  const Membership = sequelizeInstance.define('Membership', {
     id: {
       type: DataTypes.UUID,
       defaultValue: UUIDV4,
@@ -13,20 +13,22 @@ const modelInstance = (sequelizeInstance:Sequelize | any) => {
       type: DataTypes.STRING
     },
 
-    currency: {
-      type:DataTypes.STRING
+    price: {
+      type: DataTypes.FLOAT
     },
 
-    active: {
-      type: DataTypes.BOOLEAN
-    }
-    
-  });
-  PaymentPlatform.associate = (models: Database) => {
-    console.log(models)
+    currency: {
+      type: DataTypes.ENUM("ARG", "COP", "USD"),
+      defaultValue: "USD"
+    },
+  })
+
+  Membership.associate = (models: Database) => {
+    Membership.hasOne(models.User) //check
   }
 
-  return PaymentPlatform;
+  return Membership
+
 }
 
 export default modelInstance;

@@ -21,7 +21,8 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
     },
   });
   PayPlatConfig.associate = (models:Database) => {
-    console.log(models)
+    PayPlatConfig.belongsTo(models.ConfigurationStore)//check
+    PayPlatConfig.belongsTo(models.PaymentPlatform) //check
   }
 
   return PayPlatConfig;

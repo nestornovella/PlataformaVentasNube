@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
+import { DataTypes, HasOne, Sequelize, UUIDV4 } from "sequelize";
 import { Database } from "../../interfaces";
 
 
@@ -63,7 +63,9 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
     })
 
     ConfigurationStore.associate = (models: Database) => {
-        console.log(models)
+        ConfigurationStore.hasOne(models.Store) //check
+        ConfigurationStore.hasMany(models.PayPlatConfig) //check
+       
 
 
     }

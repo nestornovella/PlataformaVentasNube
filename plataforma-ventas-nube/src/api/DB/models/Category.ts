@@ -6,7 +6,7 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
     id: {
       type: DataTypes.UUID,
       defaultValue: UUIDV4,
-      primaryKey:true, 
+      primaryKey: true,
     },
 
     name: {
@@ -16,9 +16,18 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
   })
 
   Category.associate = (models: Database) => {
-    console.log(models)
+    Category.belongsToMany(models.TypeBusiness, { through: "Category-typeBusiness" }) //cheked
+    Category.belongsToMany(models.Product, { through: "Product-category" }) // cheked
+    Category.hasMany(models.Category, {
+      as: 'subCategories',
+      foreignKey: 'parentId',
+    });
+    Category.belongsTo(models.Category, {
+      as: 'parentCategory',
+      foreignKey: 'parentId',
+    });
   }
 
   return Category;
 }
- export default modelInstance;
+export default modelInstance;

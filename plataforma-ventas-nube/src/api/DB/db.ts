@@ -24,6 +24,15 @@ function checkConection(){
 
 }
 
+export async function connectDB(){
+    try {
+        await sequelize.sync({force:true})
+        console.log("la coneccion se ha establecido")
+       } catch (error) {
+        console.error(error)
+       }
+}
+
 
 
 async function importAndAsociateModels(){
@@ -47,6 +56,7 @@ async function importAndAsociateModels(){
                 db[k].associate(db)
             }
         })
+        
     
         console.log(sequelize.models)
         
@@ -54,19 +64,10 @@ async function importAndAsociateModels(){
         console.error(error)
     }
 
+
 }
 
-
-checkConection()
 importAndAsociateModels()
-
-
-
-
-
-
-
-
 
 
 export default sequelize

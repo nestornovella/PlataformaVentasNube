@@ -1,8 +1,11 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
 import { Database } from "../../interfaces";
 
+
+
+
 const modelInstance = (sequelizeInstance:Sequelize | any)=>{
-    const User = sequelizeInstance.define('User', {
+    const Store = sequelizeInstance.define('Store', {
         id:{
             primaryKey:true,
             type: DataTypes.UUID,
@@ -12,23 +15,22 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
             type:DataTypes.STRING,
             allowNull:false,
         },
-        password:{
-            type:DataTypes.TEXT,
-            allowNull:false
-        },
-        avatar:{
-            type:DataTypes.TEXT
-        },
         active:{
             type:DataTypes.BOOLEAN
         }
     })
-    
-    User.associate = (models: Database) =>{
-        //asociaciones
-        User.belongsToMany(models.Product, { through: 'UserProject' })
+
+    Store.associate = (models: Database) =>{
+        Store.hasMany(models.Branch)//check
+        Store.belongsTo(models.TypeBusiness)//check
+        Store.hasOne(models.ConfigurationStore) //check
+        Store.hasMany(models.Product)//check
+        
     }
-    
-    return User
+
+    return Store
 }
+
+
+
 export default modelInstance

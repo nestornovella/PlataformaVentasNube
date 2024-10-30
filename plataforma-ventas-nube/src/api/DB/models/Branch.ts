@@ -31,7 +31,7 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
     })
 
     Branch.associate = (models: Database) => {
-        console.log(models)
+        Branch.belongsTo(models.Store)
 
 
     }
