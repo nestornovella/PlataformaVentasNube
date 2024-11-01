@@ -1,7 +1,8 @@
+
 import { NextResponse } from "next/server";
 
 
-export const statusCode =  {
+export const statusCode = {
     aceptado: 202,
     creado: 201,
     actualizado: 200,
@@ -20,12 +21,16 @@ export const statusCode =  {
     noImplementado: 501,
     servicioNoDisponible: 503,
     versionHTTPNoSoportada: 505,
-  };
+};
 
-export function response (status = 200, data: any){
-    return NextResponse.json({status, data})
+export function response(status = 200, data: any) {
+    return NextResponse.json({ status, data })
 }
 
-export function resError( message = "error sin descripcion"){
+export function responseError(status = 500, error: any){
+    return NextResponse.json({ status, error })
+}
+
+export function error(message = "error sin descripcion") {
     throw new Error(message)
 }
