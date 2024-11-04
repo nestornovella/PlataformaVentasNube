@@ -11,6 +11,7 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
         },
         address: {
             type: DataTypes.STRING,
+            allowNull: false
         },
         manager: {
             type: DataTypes.JSON,
@@ -20,10 +21,12 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
                         throw new Error('configData debe ser un objeto JSON');
                     }
                 },
-            }
+            },
+            allowNull: false
         },
         phoneNumber: {
             type: DataTypes.STRING,
+            allowNull: false
         },
         active:{
             type:DataTypes.BOOLEAN,

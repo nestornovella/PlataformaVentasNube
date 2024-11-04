@@ -4,8 +4,8 @@ import { getProducts } from "../../DB/controllers/Prodct.controller";
 const { models } = sequelize
 
 
-export async function GET(req:NextRequest) {
-    return await getProducts(req) // NextResponse
+export async function GET() {
+    return await getProducts() // NextResponse
 }
 
 export async function POST(request:NextRequest) {

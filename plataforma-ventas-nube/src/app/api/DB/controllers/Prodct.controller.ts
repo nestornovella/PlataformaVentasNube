@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import sequelize, { checkConection } from "../db";
-import { response, statusCode } from "../helpers/ResponseHelper.helper";
+import { error, response, statusCode } from "../helpers/ResponseHelper.helper";
+import { paramsInterface } from "./interface/interface";
 const { models } = sequelize;
 
 export async function getProducts() {
@@ -14,17 +15,11 @@ export async function getProducts() {
   }
 }
 
-export async function getOneProduct(req: NextRequest) {
-  const { searchParams } = req.nextUrl;
-  const id = searchParams.get("id");
-
-  if (!id) {
-    return response(statusCode.badRequest, "el id del producto es requerido");
-  }
+export async function getOneProduct({ params }: paramsInterface) {
 
   try {
     await checkConection();
-    const product = await models.Product.findByPk(id);
+    const product = await models.Product.findByPk(params.id);
 
     if (!product) {
       return response(statusCode.noEncontrado, "producto no encontrado");
@@ -38,42 +33,31 @@ export async function getOneProduct(req: NextRequest) {
 }
 
 export async function createProduct(req: NextRequest) {
-  const productData = await req.json();
-
-  if (!productData.name || !productData.images || !productData.price) {
-    return response(statusCode.badRequest, "faltan datos");
-  }
+  const body = await req.json();
 
   try {
     await checkConection();
-    const newProduct = await models.Product.create(productData);
-
+    const { name, images, price } = body;
+    if(!name || !images || !price) error("faltan parametros")
+    await checkConection();
+    const newProduct = await models.Product.create(body);
+    if(!newProduct) error("no se pudo crear el producto")
     return response(statusCode.creado, newProduct);
   } catch (error: any) {
     return response(statusCode.errorServidor, error.message);
   }
 }
 
-export async function deleteProduct(req: NextRequest) {
-  const { searchParams } = req.nextUrl; 
-  const id = searchParams.get("id");
-
-  if (!id) {
-    return response(statusCode.badRequest, "el id del producto es requerido");
-  }
+export async function updateProduct(req: NextRequest,{ params }: paramsInterface) {
+  const body = await req.json();
 
   try {
     await checkConection();
+    const product = await models.Product.update(body, {where: { id: params.id },});
 
-    const product = await models.Product.destroy({
-      where: { id },
-    });
+    if (!product) return response(statusCode.noEncontrado, "producto no encontrado");
 
-    if (product === 0) {
-      return response(statusCode.noEncontrado, "producto no encontrado");
-    }
-
-    return response(statusCode.aceptado, { message: "producto eliminado correctamente" });
+    return response(statusCode.aceptado, { message: "producto actualizado correctamente" });
   } catch (error: any) {
     return response(statusCode.errorServidor, error.message);
   }
