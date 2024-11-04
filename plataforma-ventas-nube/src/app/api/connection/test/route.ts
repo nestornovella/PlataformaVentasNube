@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import sequelize, { checkConection } from "../../DB/db";
-import { getProducts } from "../../DB/controllers/Prodct.controller";
+import { getProducts } from "../../product/Prodct.controller";
 const { models } = sequelize
 
 

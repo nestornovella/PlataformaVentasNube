@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { createUser, getAllUsers } from "../DB/controllers/User.controller";
+import { createUser, getAllUsers } from "./User.controller";
 
 
 

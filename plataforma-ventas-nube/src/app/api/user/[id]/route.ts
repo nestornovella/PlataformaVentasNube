@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
-import { getUserById, updateUser } from "../../DB/controllers/User.controller";
-import { paramsInterface } from "../../DB/controllers/interface/interface";
+import { getUserById, updateUser } from "../User.controller";
+import { paramsInterface } from "../../interface";
 
 
 

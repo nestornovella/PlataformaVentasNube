@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { paramsInterface } from "../../DB/controllers/interface/interface";
+import { paramsInterface } from "../../interface";
 import { getTypeBusinessById, updateTypeBusiness } from "../../DB/controllers/TypeBusiness.controller";
 
 

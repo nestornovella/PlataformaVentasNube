@@ -1,12 +1,12 @@
 import { NextRequest } from "next/server";
-import sequelize, { checkConection } from "../db";
+import sequelize, { checkConection } from "../DB/db";
 import {
   error,
   response,
   responseError,
   statusCode,
-} from "../helpers/ResponseHelper.helper";
-import { paramsInterface } from "./interface/interface";
+} from "../DB/helpers/ResponseHelper.helper";
+import { paramsInterface } from "../interface";
 
 const { models } = sequelize;
 

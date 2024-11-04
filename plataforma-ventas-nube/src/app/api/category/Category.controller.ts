@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
-import sequelize, { checkConection } from "../db";
-import { response, statusCode, error } from "../helpers/ResponseHelper.helper";
-import { paramsInterface } from "./interface/interface";
+import sequelize, { checkConection } from "../DB/db";
+import { response, statusCode, error } from "../DB/helpers/ResponseHelper.helper";
+import { paramsInterface } from "../interface";
 
 const { models } = sequelize;
 
@@ -25,7 +25,7 @@ export async function getCategoryById({ params }: paramsInterface) {
     }
 
     return response(statusCode.aceptado, category);
-  } catch (error:any) {
+  } catch (error: any) {
     return response(statusCode.errorServidor, error.message);
   }
 }
@@ -36,22 +36,22 @@ export async function createCategory(req: NextRequest) {
   try {
     await checkConection();
     const { name } = body;
-    if(!name) error("faltan parametros")
+    if (!name) error("faltan parametros")
     await checkConection();
     const newCategory = await models.Category.create(body);
-    if(!newCategory) error("no se pudo crear la actegoria")
+    if (!newCategory) error("no se pudo crear la actegoria")
     return response(statusCode.creado, newCategory);
   } catch (error: any) {
     return response(statusCode.errorServidor, error.message);
   }
 }
 
-export async function updateCategory(req: NextRequest,{ params }: paramsInterface) {
+export async function updateCategory(req: NextRequest, { params }: paramsInterface) {
   const body = await req.json();
 
   try {
     await checkConection();
-    const category = await models.Category.update(body, {where: { id: params.id },});
+    const category = await models.Category.update(body, { where: { id: params.id }, });
 
     if (!category) return response(statusCode.noEncontrado, "categoria no encontrada");
 

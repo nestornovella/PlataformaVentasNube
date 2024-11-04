@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server"
-import { paramsInterface } from "../../DB/controllers/interface/interface"
-import { getCategoryById, updateCategory } from "../../DB/controllers/Category.controller"
+import { paramsInterface } from "../../interface"
+import { getCategoryById, updateCategory } from "../Category.controller"
 
 
 export async function GET(req:NextRequest, params:paramsInterface){

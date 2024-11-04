@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { createCategory, getCategories } from "../DB/controllers/Category.controller";
+import { createCategory, getCategories } from "./Category.controller";
 
 
 export async function GET(){
