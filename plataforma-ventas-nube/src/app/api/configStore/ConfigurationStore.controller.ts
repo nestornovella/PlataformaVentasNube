@@ -39,7 +39,7 @@ export async function updateConfigStore(req:NextRequest,{ params }: paramsInterf
       if(!updateConfig) error('no se logoro actualizar el storConfig')
       return {status:statusCode.actualizado, StoreId:confStore.StoreId}
     } catch (error: any) {
-      return {status:statusCode.errorServidor}
+      return {status:statusCode.errorServidor, error}
     }
   
   }
