@@ -1,6 +1,5 @@
 import { NextRequest } from "next/server";
 import { updateConfigStore } from "../ConfigurationStore.controller";
-import { paramsInterface } from "../../interface";
 import { revalidatePath } from "next/cache";
 import { response, statusCode } from "../../DB/helpers/ResponseHelper.helper";
 import sequelize from "../../DB/db";
