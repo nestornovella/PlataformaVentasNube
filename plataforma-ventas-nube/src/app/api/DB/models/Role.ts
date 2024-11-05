@@ -1,5 +1,4 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any)=>{
     const Role = sequelizeInstance.define('Role', {
@@ -14,7 +13,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
         }
     })
     
-    Role.associate = (models: Database) =>{
+    Role.associate = (models) =>{
         //asociaciones
         Role.hasMany(models.User) //check
 

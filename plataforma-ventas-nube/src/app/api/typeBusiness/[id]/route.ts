@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { paramsInterface } from "../../interface";
-import { getTypeBusinessById, updateTypeBusiness } from "../../DB/controllers/TypeBusiness.controller";
+import { getTypeBusinessById, updateTypeBusiness } from "../TypeBusiness.controller";
+
 
 
 export async function GET(req:NextRequest, params:paramsInterface){

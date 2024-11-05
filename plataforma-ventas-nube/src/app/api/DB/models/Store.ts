@@ -1,5 +1,4 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database } from "../../interfaces";
 
 
 
@@ -21,7 +20,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
         }
     })
 
-    Store.associate = (models: Database) =>{
+    Store.associate = (models) =>{
         Store.hasMany(models.Branch)//check
         Store.belongsTo(models.TypeBusiness)//check
         Store.hasOne(models.ConfigurationStore) //check

@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { createCategory, getCategories } from "./Category.controller";
+import { addCategoryChild, createCategory, getCategories } from "./Category.controller";
 
 
 export async function GET(){
@@ -7,5 +7,12 @@ export async function GET(){
 }
 
 export async function POST(req: NextRequest){
-  return await createCategory(req);
+  const body = await req.json()
+  const {action} = body
+  if(action){
+    return await addCategoryChild(body)
+  }else{
+    return await createCategory(body);
+  }
+
 }

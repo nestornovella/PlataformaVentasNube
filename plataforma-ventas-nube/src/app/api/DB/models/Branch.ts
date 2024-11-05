@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database } from "../../interfaces";
+
 
 
 const modelInstance = (sequelizeInstance: Sequelize | any) => {
@@ -34,7 +34,7 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
         }
     })
 
-    Branch.associate = (models: Database) => {
+    Branch.associate = (models) => {
         Branch.belongsTo(models.Store)
 
 

@@ -8,7 +8,12 @@ const { models } = sequelize;
 export async function getCategories() {
   try {
     await checkConection();
-    const categories = await models.Category.findAll();
+    const categories = await models.Category.findAll(
+      {include: {
+         model: models.Category,
+          as: 'subCategories' 
+        }
+      });
     return response(statusCode.aceptado, categories);
   } catch (error: any) {
     return response(statusCode.noEncontrado, error.message);
@@ -30,14 +35,35 @@ export async function getCategoryById({ params }: paramsInterface) {
   }
 }
 
-export async function createCategory(req: NextRequest) {
-  const body = await req.json();
+export async function addCategoryChild(body:{categoryId:string, subCategoryId:string}) {
+  
+  const { categoryId, subCategoryId } = body
+  try {
+    if (!categoryId || !subCategoryId) error('se requieren parametros categoryId y childId')
+    const [mainCategory, child]: any = await Promise.all([
+      models.Category.findByPk(categoryId),
+      models.Category.findByPk(subCategoryId)
+    ])
+    console.log("main ->", mainCategory)
+    console.log("child ->", child)
+    if (!mainCategory || !child) error('no se encontraron las categorias en la base de datos')
+
+    if (mainCategory && child) {
+      await mainCategory.addSubCategory(child);
+    }
+    return response(statusCode.aceptado, "modelo asociado con exito")
+  } catch (error: any) {
+    return response(statusCode.errorServidor, error.message)
+  }
+
+}
+
+export async function createCategory(body:{name:string}) {
 
   try {
     await checkConection();
     const { name } = body;
     if (!name) error("faltan parametros")
-    await checkConection();
     const newCategory = await models.Category.create(body);
     if (!newCategory) error("no se pudo crear la actegoria")
     return response(statusCode.creado, newCategory);

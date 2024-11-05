@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
-import { createStore, getStore } from "../DB/controllers/Store.controller";
+import { createStore, getStore } from "./Store.controller";
+
 
 
 export async function GET(){

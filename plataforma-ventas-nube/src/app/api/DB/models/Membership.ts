@@ -1,5 +1,4 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any) => {
   const Membership = sequelizeInstance.define('Membership', {
@@ -23,7 +22,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any) => {
     },
   })
 
-  Membership.associate = (models: Database) => {
+  Membership.associate = (models) => {
     Membership.hasOne(models.User) //check
   }
 

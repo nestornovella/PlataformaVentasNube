@@ -1,5 +1,4 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any) => {
   const PaymentPlatform = sequelizeInstance.define("PaymentPlatform", {
@@ -23,7 +22,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any) => {
     }
     
   });
-  PaymentPlatform.associate = (models: Database) => {
+  PaymentPlatform.associate = (models) => {
     PaymentPlatform.hasMany(models.PayPlatConfig)//check
   }
 

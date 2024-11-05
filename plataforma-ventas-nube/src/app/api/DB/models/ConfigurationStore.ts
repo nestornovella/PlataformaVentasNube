@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database } from "../../interfaces";
+
 
 
 const modelInstance = (sequelizeInstance: Sequelize | any) => {
@@ -17,7 +17,8 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
                         throw new Error('configData debe ser un objeto JSON');
                     }
                 },
-            }
+            },
+            defaultValue:{}
         },
         footer: {
             type: DataTypes.JSON,
@@ -27,7 +28,8 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
                         throw new Error('configData debe ser un objeto JSON');
                     }
                 },
-            }
+            },
+            defaultValue:{}
         },
         card: {
             type: DataTypes.JSON,
@@ -37,7 +39,8 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
                         throw new Error('configData debe ser un objeto JSON');
                     }
                 },
-            }
+            },
+            defaultValue:{}
         },
         searchBar: {
             type: DataTypes.JSON,
@@ -47,7 +50,8 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
                         throw new Error('configData debe ser un objeto JSON');
                     }
                 },
-            }
+            },
+            defaultValue:{}
         },
 
         cart: {
@@ -58,11 +62,12 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
                         throw new Error('configData debe ser un objeto JSON');
                     }
                 },
-            }
+            },
+            defaultValue:{}
         }
     })
 
-    ConfigurationStore.associate = (models: Database) => {
+    ConfigurationStore.associate = (models) => {
         ConfigurationStore.hasOne(models.Store) //check
         ConfigurationStore.hasMany(models.PayPlatConfig) //check
        

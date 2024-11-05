@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { createTypeBusiness, getTypeBusiness } from "../DB/controllers/TypeBusiness.controller";
+import { createTypeBusiness, getTypeBusiness } from "./TypeBusiness.controller";
 
 
 export async function GET(){

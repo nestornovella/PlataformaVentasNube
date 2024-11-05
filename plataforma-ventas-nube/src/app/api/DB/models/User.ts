@@ -1,5 +1,4 @@
 import { DataTypes, Sequelize } from "sequelize";
-import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance:Sequelize | any)=>{
     const User = sequelizeInstance.define('User', {
@@ -29,7 +28,7 @@ const modelInstance = (sequelizeInstance:Sequelize | any)=>{
         }
     })
     
-    User.associate = (models: Database) =>{
+    User.associate = (models) =>{
         //asociaciones
         User.hasOne(models.Membership)//check
         User.belongsTo(models.Role)//check

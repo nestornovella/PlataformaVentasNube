@@ -1,5 +1,4 @@
 import { DataTypes, Sequelize, UUIDV4 } from "sequelize";
-import { Database } from "../../interfaces";
 
 const modelInstance = (sequelizeInstance: Sequelize | any) => {
   const TypeBusiness = sequelizeInstance.define("TypeBusiness", {
@@ -15,7 +14,7 @@ const modelInstance = (sequelizeInstance: Sequelize | any) => {
     }
   })
   
-  TypeBusiness.associate = (models: Database) => {
+  TypeBusiness.associate = (models) => {
     TypeBusiness.belongsToMany(models.Category, {through:"Category-typeBusiness"})
     TypeBusiness.hasMany(models.Store)
   }
