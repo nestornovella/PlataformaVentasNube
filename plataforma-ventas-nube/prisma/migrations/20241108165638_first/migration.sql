@@ -108,7 +108,8 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "avatar" TEXT NOT NULL,
-    "active" BOOLEAN NOT NULL,
+    "active" BOOLEAN NOT NULL DEFAULT false,
+    "test" JSONB NOT NULL DEFAULT '{"name": "Default Name", "isActive": true, "age": 0}',
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
