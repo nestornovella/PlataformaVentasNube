@@ -10,7 +10,7 @@ export async function getConfigurationStore (){
     await checkConection()
     try {
         const allConfig = await models.ConfigurationStore.findAll()
-        return response(statusCode.creado, allConfig)
+        return response(statusCode.aceptado, allConfig)
     } catch (error: any) {
         return response(statusCode.errorServidor, error.message)
     }
