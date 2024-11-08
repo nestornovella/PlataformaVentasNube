@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+//import { NextRequest } from "next/server";
 import sequelize, { checkConection } from "../DB/db";
 import { response, statusCode } from "../DB/helpers/ResponseHelper.helper";
 import { paramsInterface } from "../interface";
