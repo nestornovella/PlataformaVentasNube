@@ -24,3 +24,6 @@ npx prisma init
 
 # 9. prisma generate
 npx prisma generate
+
+# 10. modificar migracion sin eliminar datos de tabla
+npx prisma dev push

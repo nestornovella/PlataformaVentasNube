@@ -2,14 +2,15 @@ import { NextRequest } from "next/server";
 import sequelize, { checkConection } from "../DB/db";
 import { error, response, statusCode } from "../DB/helpers/ResponseHelper.helper";
 import { paramsInterface } from "../interface";
-
+import { PrismaClient } from "@prisma/client";
 
 const { models } = sequelize;
+const prisma = new PrismaClient();
 
 export async function getTypeBusiness() {
   try {
     await checkConection();
-    const typeBisness = await models.TypeBusiness.findAll()
+    const typeBisness = await prisma.typeBsuness.findMany()
     return response(statusCode.aceptado, typeBisness);
   } catch (error: any) {
     return response(statusCode.noEncontrado, error.message);
