@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DEPLOY_URL")
+}
+
+model Branch {
+  id String @id @default(uuid()) @db.Uuid
+  address String
+  manager Json
+  phoneNumber String
+  active Boolean
+}
+
+model Category {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+}
+
+model ConfigurationStore {
+  id String @id @default(uuid()) @db.Uuid
+  banner Json
+  footer Json
+  card Json
+  searchBar Json
+  cart Json
+}
+
+model Membership {
+  id String @id @default(uuid()) @db.Uuid
+  name     String
+  price    Float
+  currency Currency @default(USD)
+}
+enum Currency {
+  ARG
+  COP
+  USD
+}
+
+model PaymentPlatform {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  currency String
+  active Boolean
+}
+
+model PayPlatConfig {
+  id String @id @default(uuid()) @db.Uuid
+  credential Json
+}
+
+model Product {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  image String
+  price Float
+  stock Int
+  active Boolean
+}
+
+model Role {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  active Active @default(user)
+}
+enum Active {
+  user
+  admin
+  superAdmin
+}
+
+model Store {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  active Boolean
+}
+
+model TypeBsuness {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+}
+
+model User {
+  id String @id @default(uuid()) @db.Uuid
+  name String 
+  email String
+  password String
+  avatar String
+  active Boolean
+}
