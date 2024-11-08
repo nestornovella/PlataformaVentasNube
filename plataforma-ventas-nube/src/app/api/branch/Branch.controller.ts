@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import sequelize, { checkConection } from "../DB/db";
-import { error, response, statusCode } from "../DB/helpers/ResponseHelper.helper";
+import { response, statusCode } from "../DB/helpers/ResponseHelper.helper";
 import { paramsInterface } from "../interface";
 const {models} = sequelize;
 
@@ -25,7 +25,7 @@ export async function getBranchById({params}: paramsInterface) {
   }
 }
 
-export async function createBranch(req: NextRequest) {
+/* export async function createBranch(req: NextRequest) {
   const body = await req.json();
   
   try {
@@ -34,4 +34,4 @@ export async function createBranch(req: NextRequest) {
   } catch (error) {
     
   }
-}
+} */
