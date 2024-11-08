@@ -1,6 +1,6 @@
 
 //www.tienda-nube/electonicaDigital
-
+"use server"
 import { getStore } from "./getStore";
 
 async function Main({params}:{params:{store:string}}) {
